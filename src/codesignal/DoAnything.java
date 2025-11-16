@@ -13,11 +13,24 @@ public class DoAnything {
 
         ArrayList<String> result = new ArrayList<>();
         result.add("Kedar:5");
-        result.stream().mapToInt(i -> Integer.parseInt(i.substring(5,6))).toArray();
-        result.stream().map(i -> Integer.parseInt(i.substring(5,6))).filter(i -> i > 3).toList();
+        //result.stream().mapToInt(i -> Integer.parseInt(i.substring(5,6))).toArray();
+        //result.stream().map(i -> Integer.parseInt(i.substring(5,6))).filter(i -> i > 3).toList();
+
+        printCityORCountyName(new County(10101, "Cook"));
     }
 
     private static String addNums(BiFunction<Integer, Integer, String> adder) {
         return adder.apply(1,2);
     }
+
+    private static void printCityORCountyName(Object cityOrCounty) {
+        switch(cityOrCounty) { //PatternMatching for record
+            case County c -> System.out.println("County Zip Code:"+c.zipCode());
+            case City(int population, String ctName) -> System.out.println("City Population:"+ctName); // Decounstruction
+            default -> System.out.println("Not a City or County");
+        }
+    }
 }
+
+record County (int zipCode, String countName){};
+record City (int polulation, String cityName) {};
