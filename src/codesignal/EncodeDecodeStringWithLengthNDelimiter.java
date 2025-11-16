@@ -8,6 +8,7 @@ public class EncodeDecodeStringWithLengthNDelimiter {
         //Collections.addAll(strings, "Test1", "Problem2", "Solution3");
         //    List<String> sourceString = List.of("Test1", "Problem2", "Solution3");
         //    strings.addAll(sourceString);
+
         strings.addAll(Arrays.asList("Test1", "Problem2", "Solution3"));
         String encodedString = encode(strings);
         System.out.println("Decoded:"+decode(encodedString));
