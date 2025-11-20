@@ -5,8 +5,8 @@ import java.util.*;
 class ThreeNumberSum {
 
     public static void main(String[] args) {
-        Integer[] in = new Integer[] {5,4,3,8,-3,-1};
-        List<Integer[]> result = threeNumberSum(in, 10);
+        Integer[] in = new Integer[] {5,5,4,3,8,-3,-1};
+        List<Integer[]> result = threeNumberSum(in, 8);
         for (Integer[] row : result) {
             System.out.println(row[0] + ":" +row[1]+ ":"+ row[2]);
         }
@@ -28,11 +28,16 @@ class ThreeNumberSum {
                 if(interimSum == targetSum) {
                     resultList.add(new Integer[] {cn, array[lp], array[rp]});
                     lp++; rp--;
+
+                    while (lp < rp && array[lp]== array[lp-1]) {
+                        lp++;
+                    }
                 } else if (interimSum < targetSum) {
                     lp++;
                 } else {
                     rp--;
                 }
+                lp++;
             }
         }
         return resultList;
